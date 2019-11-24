@@ -1,0 +1,15 @@
+server:
+  port: 6005
+spring:
+  profiles:
+    active: ${spring.cloud.config.profile}
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  path: logs
+  file: app.log
+
+
+
+
+

@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: ${db.driver.class.name}
+    url: jdbc:mysql://${db.host}:${db.port}/zzz?characterEncoding=utf8&useSSL=false
+    username: ${db.username}
+    password: ${db.password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: ${seata.tx.service.group}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.server.url}
+    registry-fetch-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 20
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: ${db.driver.class.name}
+    url: jdbc:mysql://${db.host}:${db.port}/zzz
+    username: ${db.username}
+    password: ${db.password}
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: ${seata.tx.service.group}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.server.url}
+  instance:
+    prefer-ip-address: true
