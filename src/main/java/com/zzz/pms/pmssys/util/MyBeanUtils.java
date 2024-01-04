@@ -1,4 +1,4 @@
-package com.zzz.pms.pmssys.utils;
+package com.zzz.pms.pmssys.util;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
@@ -23,8 +23,7 @@ public class MyBeanUtils extends BeanUtils {
         }
     }
 
-    private static void copyProperties(Object source, Object target, @Nullable Class<?> editable,
-                                       @Nullable String... ignoreProperties) throws BeansException {
+    private static void copyProperties(Object source, Object target, @Nullable Class<?> editable, @Nullable String... ignoreProperties) throws BeansException {
 
         Assert.notNull(source, "Source must not be null");
         Assert.notNull(target, "Target must not be null");
@@ -32,8 +31,7 @@ public class MyBeanUtils extends BeanUtils {
         Class<?> actualEditable = target.getClass();
         if (editable != null) {
             if (!editable.isInstance(target)) {
-                throw new IllegalArgumentException("Target class [" + target.getClass().getName() +
-                        "] not assignable to Editable class [" + editable.getName() + "]");
+                throw new IllegalArgumentException("Target class [" + target.getClass().getName() + "] not assignable to Editable class [" + editable.getName() + "]");
             }
             actualEditable = editable;
         }
@@ -46,8 +44,7 @@ public class MyBeanUtils extends BeanUtils {
                 PropertyDescriptor sourcePd = getPropertyDescriptor(source.getClass(), targetPd.getName());
                 if (sourcePd != null) {
                     Method readMethod = sourcePd.getReadMethod();
-                    if (readMethod != null &&
-                            ClassUtils.isAssignable(writeMethod.getParameterTypes()[0], readMethod.getReturnType())) {
+                    if (readMethod != null && ClassUtils.isAssignable(writeMethod.getParameterTypes()[0], readMethod.getReturnType())) {
                         try {
                             if (!Modifier.isPublic(readMethod.getDeclaringClass().getModifiers())) {
                                 readMethod.setAccessible(true);
@@ -59,10 +56,8 @@ public class MyBeanUtils extends BeanUtils {
                             if (value != null) {
                                 writeMethod.invoke(target, value);
                             }
-                        }
-                        catch (Throwable ex) {
-                            throw new FatalBeanException(
-                                    "Could not copy property '" + targetPd.getName() + "' from source to target", ex);
+                        } catch (Throwable ex) {
+                            throw new FatalBeanException("Could not copy property '" + targetPd.getName() + "' from source to target", ex);
                         }
                     }
                 }

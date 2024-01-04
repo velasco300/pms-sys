@@ -12,15 +12,6 @@ spring:
     alibaba:
       seata:
         tx-service-group: ${seata.tx.service.group}
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: ${eureka.server.url}
-    registry-fetch-interval-seconds: 10
-  instance:
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 20
 
 
 

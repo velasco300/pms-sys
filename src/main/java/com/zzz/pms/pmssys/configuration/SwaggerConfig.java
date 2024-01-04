@@ -20,10 +20,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .enable(enable).apiInfo(apiInfo()).select()
-                .apis(RequestHandlerSelectors.basePackage("com.hqda.pms.pmssys.controller"))
-                .paths(PathSelectors.any()).build();
+        return new Docket(DocumentationType.SWAGGER_2).enable(enable).apiInfo(apiInfo()).select().apis(RequestHandlerSelectors.basePackage("com.hqda.pms.pmssys.controller")).paths(PathSelectors.any()).build();
     }
 
     private ApiInfo apiInfo() {

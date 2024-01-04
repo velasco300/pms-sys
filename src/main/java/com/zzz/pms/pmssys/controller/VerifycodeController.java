@@ -1,6 +1,7 @@
 package com.zzz.pms.pmssys.controller;
 
-import com.zzz.pms.pmsgeneric.common.Result;
+import com.zzz.pms.pmsgeneric.common.CommonResult;
+import com.zzz.pms.pmsgeneric.exception.ExceptionItemEnum;
 import com.zzz.pms.pmssys.entity.Verifycode;
 import com.zzz.pms.pmssys.service.VerifycodeService;
 import io.swagger.annotations.Api;
@@ -26,26 +27,23 @@ public class VerifycodeController extends BaseController {
     private VerifycodeService verifycodeService;
 
     @ApiOperation(value = "根据验证码类型和接收端号码查询验证码")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "codeType", value = "验证码类型", dataType = "Integer", required = true),
-            @ApiImplicitParam(name = "receiver", value = "接收端号码", dataType = "String", required = true)
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "codeType", value = "验证码类型", dataType = "Integer", required = true), @ApiImplicitParam(name = "receiver", value = "接收端号码", dataType = "String", required = true)})
     @GetMapping(value = "/receiver")
-    public Result<Verifycode> queryByCodeTypeAndReceiver(Integer codeType, String receiver) {
+    public CommonResult<Verifycode> queryByCodeTypeAndReceiver(Integer codeType, String receiver) {
         log.debug(msg("参数codeType=" + codeType + "; receiver=" + receiver));
-        Result<Verifycode> rs = new Result<>();
+        CommonResult<Verifycode> rs = null;
         List<Verifycode> verifycodes = verifycodeService.listByCodeTypeAndReceiver(codeType, receiver);
         if (verifycodes != null && !verifycodes.isEmpty()) {
             Calendar c = Calendar.getInstance();
             // 已经按创建时间拍好序，直接取第一个
             Verifycode v = verifycodes.get(0);
             if (c.getTime().before(v.getExpireTime())) {
-                rs.setData(v);
+                rs = CommonResult.success(v);
             } else {
-                rs.setMsg("验证码已经过期!");
+                rs = CommonResult.failed("", ExceptionItemEnum.VERIFYCODE_TIMEOUT, null);
             }
         } else {
-            rs.setMsg("没有查到验证码!");
+            rs = CommonResult.failed("", ExceptionItemEnum.VERIFYCODE_NO_FIND, null);
         }
         return rs;
     }
