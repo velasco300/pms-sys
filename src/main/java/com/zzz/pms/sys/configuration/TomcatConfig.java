@@ -1,4 +1,4 @@
-package com.zzz.pms.pmssys.configuration;
+package com.zzz.pms.sys.configuration;
 
 import org.apache.catalina.valves.RemoteAddrValve;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;

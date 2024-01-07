@@ -1,6 +1,6 @@
-package com.zzz.pms.pmssys.configuration;
+package com.zzz.pms.sys.configuration;
 
-import com.zzz.pms.pmssys.common.LogIntercepter;
+import com.zzz.pms.sys.common.LogIntercepter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

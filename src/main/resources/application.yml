@@ -1,7 +1,11 @@
 spring:
   profiles:
-    active: ${spring.cloud.config.profile}
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
 logging:
+  level:
+    com.zzz.pms.sys.mapper: debug
   path: logs
   file: app.log
 

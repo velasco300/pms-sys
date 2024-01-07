@@ -1,14 +1,14 @@
-package com.zzz.pms.pmssys;
+package com.zzz.pms.sys;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients
+@MapperScan("com.zzz.pms.sys.mapper")
 public class Main {
 
     public static void main(String[] args) {

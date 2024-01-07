@@ -1,17 +1,9 @@
 spring:
   datasource:
-    driver-class-name: ${db.driver.class.name}
-    url: jdbc:mysql://${db.host}:${db.port}/zzz?characterEncoding=utf8&useSSL=false
-    username: ${db.username}
-    password: ${db.password}
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  cloud:
-    alibaba:
-      seata:
-        tx-service-group: ${seata.tx.service.group}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zzz?characterEncoding=utf8&useSSL=false
+    username: root
+    password:
 
 
 

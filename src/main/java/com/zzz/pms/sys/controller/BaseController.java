@@ -1,8 +1,7 @@
-package com.zzz.pms.pmssys.controller;
+package com.zzz.pms.sys.controller;
 
-
-import com.zzz.pms.pmsgeneric.util.ThreadParam;
-import com.zzz.pms.pmsgeneric.util.Watch;
+import com.zzz.pms.generic.util.ThreadParam;
+import com.zzz.pms.generic.util.Watch;
 
 public class BaseController {
 

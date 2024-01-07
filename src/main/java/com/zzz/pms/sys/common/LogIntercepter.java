@@ -1,7 +1,7 @@
-package com.zzz.pms.pmssys.common;
+package com.zzz.pms.sys.common;
 
-import com.zzz.pms.pmsgeneric.util.ThreadParam;
-import com.zzz.pms.pmsgeneric.util.Watch;
+import com.zzz.pms.generic.util.ThreadParam;
+import com.zzz.pms.generic.util.Watch;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

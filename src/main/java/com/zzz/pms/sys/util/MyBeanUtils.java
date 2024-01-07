@@ -1,4 +1,4 @@
-package com.zzz.pms.pmssys.util;
+package com.zzz.pms.sys.util;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeansException;
