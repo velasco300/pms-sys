@@ -5,6 +5,7 @@ import com.zzz.pms.generic.exception.AppException;
 import com.zzz.pms.generic.exception.ExceptionItemEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -25,7 +26,12 @@ public class ExceptionController {
     @ResponseStatus(HttpStatus.OK)
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public CommonResult<String> appException(MethodArgumentNotValidException e) {
-        CommonResult<String> rs = CommonResult.error(e.getFieldError().getDefaultMessage());
+        String msg = "validate error";
+        FieldError fe = e.getFieldError();
+        if (fe != null) {
+            msg = fe.getDefaultMessage();
+        }
+        CommonResult<String> rs = CommonResult.error(msg);
         log.error(rs.toString(), e);
         return rs;
     }
