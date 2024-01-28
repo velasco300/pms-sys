@@ -1,15 +1,13 @@
+server:
+  port: 6003
 spring:
-  profiles:
-    active: dev
+  application:
+    name: pms-sys
   main:
     allow-bean-definition-overriding: true
 logging:
   level:
+    root: info
     com.zzz.pms.sys.mapper: debug
-  path: logs
-  file: app.log
-
-
-
 
 
