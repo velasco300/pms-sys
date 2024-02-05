@@ -5,6 +5,21 @@ spring:
     name: pms-sys
   main:
     allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: dev
+        group: pms
+      config:
+        namespace: dev
+        group: pms
+  config:
+    import:
+      - optional:nacos:common.yaml
+      - optional:nacos:mysql.yaml?group=common
+      - optional:nacos:redis.yaml?group=demo&refreshEnabled=false
+      - optional:nacos:${spring.application.name}.yaml
 logging:
   level:
     root: info
